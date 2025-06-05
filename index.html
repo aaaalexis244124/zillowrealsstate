@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agendar Cita Inmobiliaria</title>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("mi5fb16RU8BDmi0cH");
+    })();
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-image: url("05B87AA8-D6B7-41CD-AFF8-5997F284ADFD.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      backdrop-filter: brightness(0.7);
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 60px auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .info-extra {
+      margin-top: 25px;
+      font-size: 14px;
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .info-extra img {
+      max-width: 120px;
+      margin: 10px auto;
+    }
+
+    .info-extra a {
+      color: #007BFF;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .info-extra a:hover {
+      text-decoration: underline;
+    }
+
+    .info-extra strong {
+      display: block;
+      margin-top: 10px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Agendar Cita Inmobiliaria</h2>
+
+    <form id="formulario-cita">
+      <input type="text" name="nombre" placeholder="Nombre completo" required>
+      <input type="tel" name="telefono" placeholder="Teléfono" required>
+      <input type="email" name="email" placeholder="Correo electrónico" required>
+      <textarea name="direccion" placeholder="Dirección de la vivienda" required></textarea>
+      <input type="date" name="fecha" required>
+      <input type="time" name="hora" required>
+      <button type="submit">Agendar Cita</button>
+    </form>
+
+    <div class="info-extra">
+      <strong>📲 Cargo por la app: $99.99 USD</strong>
+      <strong>💳 Enviar comprobante a WhatsApp: +1 (803) 729‑8718</strong>
+      <strong>📩 Correo PayPal: info.zillowrealstate@gmail.com</strong>
+
+      <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="Logo PayPal">
+
+      <div style="margin-top: 15px;">
+        <strong>Haz tu pago en línea:</strong><br>
+        <a href="https://paypal.me/FSIERRAPEREZ" target="_blank">https://paypal.me/FSIERRAPEREZ</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("formulario-cita").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      emailjs.sendForm(
+        'service_dcl9p9w',
+        'template_dqcxfsu',
+        this
+      ).then(function () {
+        alert("✅ Cita enviada con éxito.");
+        document.getElementById("formulario-cita").reset();
+      }, function (error) {
+        alert("❌ Error al enviar la cita.");
+        console.log(error);
+      });
+    });
+  </script>
+
+</body>
+</html>
